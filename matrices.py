@@ -440,25 +440,8 @@ class Matrix:
 		return A
 	
 	def eigenvalues(self):
-		"""computes the eigenvalues of a given matrix."""
-		if not self.is_square:
-			raise ValueError("can only find the eigenvalues of square matrices")
-		else:
-			from polynomials import Polynomial
-			D = self.dimensions[0]
-			if D==2:
-				#f(x) = x^2 + ad*x + ad-bc = 0
-				F = Polynomial(self.determinant(), self[0,0]+self[1,1], 1, variable="λ")
-				eigenvalues = F.solve()
-				return eigenvalues
-			elif D==3:
-				a, b, c, d, e, f, g, h, i = self[0,0], self[0,1], self[0,2], self[1,0], self[1,1], self[1,2], self[2,0], self[2,1], self[2,2]
-				F = Polynomial(((a*e*i)+(b*f*g)+(c*d*h)-(a*f*h)-(b*d*i)-(c*e*g)), ((f*h)+(b*d)+(c*g)-(a*e)-(a*i)+(e*i)), (a+e+i), -1)
-				eigenvalues = F.solve()
-				return eigenvalues
-			else:
-				#TODO: impliment general formula to do this
-				pass
+		#TODO: add polynomial library to this
+		pass
 	
 	def eigenvectors(self):
 		pass
